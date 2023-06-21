@@ -3,10 +3,12 @@ package com.example.product_app.model.service;
 import com.example.product_app.model.entity.Product;
 import com.example.product_app.utility.Util;
 import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+@Service
 public class ProductService extends AbstractProductService{
     @Override
     public List<Product> findByPriceGreaterThanEqual(double price) {
