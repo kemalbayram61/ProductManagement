@@ -4,7 +4,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
-@SequenceGenerator(name = "PRODUCT_SEQUENCE", sequenceName = "PRODUCTS_SEQ", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "PRODUCTS_SEQUENCE", sequenceName = "PRODUCTS_SEQ", initialValue = 1, allocationSize = 1)
 @Data
 @Entity
 @Table(name = "PRODUCTS")
@@ -13,7 +13,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PRODUCT_SEQUENCE")
     @Id
     @Column(name = "PRODUCT_ID")
-    private String productID;
+    private Integer productID;
 
     @Column(name = "PRICE")
     private String price;
