@@ -15,15 +15,18 @@ public class Product {
     @Column(name = "PRODUCT_ID")
     private Integer productID;
 
-    @Column(name = "PRICE")
+    @Column(name = "NAME", length = 120, nullable = false)
+    private String name;
+
+    @Column(name = "PRICE", nullable = false)
     private String price;
 
-    @Column(name = "CATEGORY")
+    @Column(name = "CATEGORY", length = 80, nullable = false)
     private String category;
 
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "CREATED_DATE")
+    @Column(name = "CREATED_DATE", nullable = false)
     private Date createdDate;
 }
