@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     // SELECT * FROM PRODUCTS WHERE PRICE >= ?
-    List<Product> findByPriceGreaterThanEqual(double salary);
+    List<Product> findByPriceGreaterThanEqual(double price);
 
-    // SELECT * FROM PRODUCTS WHERE PRICE > ?
-    List<Product> findByPriceGreaterThan(double salary);
+    // SELECT * FROM PRODUCTS WHERE PRICE < ?
+    List<Product> findByPriceLessThan(double price);
 }

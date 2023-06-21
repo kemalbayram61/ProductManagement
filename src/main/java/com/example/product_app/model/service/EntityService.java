@@ -11,5 +11,5 @@ public interface EntityService<E, I> {
 
     List<E> getAll();
 
-    E insert(E object);
+    E save(E object);
 }
