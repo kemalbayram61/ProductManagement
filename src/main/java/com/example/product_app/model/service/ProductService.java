@@ -36,12 +36,12 @@ public class ProductService extends AbstractProductService{
     public Product findByID(Integer id) {
         try {
             return productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Product Entity is not found."));
+        }catch (EntityNotFoundException entityNotFoundException){
+            Util.showGeneralException(entityNotFoundException);
         }catch (NullPointerException nullPointerException){
             Util.showGeneralException(nullPointerException);
         }catch (IllegalArgumentException illegalArgumentException){
             Util.showGeneralException(illegalArgumentException);
-        }catch (EntityNotFoundException entityNotFoundException){
-            Util.showGeneralException(entityNotFoundException);
         }catch (Exception exception){
             Util.showGeneralException(exception);
         }
