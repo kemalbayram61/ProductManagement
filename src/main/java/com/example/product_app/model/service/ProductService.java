@@ -4,6 +4,7 @@ import com.example.product_app.model.entity.Product;
 import com.example.product_app.utility.Util;
 import org.springframework.dao.OptimisticLockingFailureException;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 public class ProductService extends AbstractProductService{
@@ -34,13 +35,13 @@ public class ProductService extends AbstractProductService{
     @Override
     public Product findByID(Integer id) {
         try {
-            return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Entity is not found."));
+            return productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Product Entity is not found."));
         }catch (NullPointerException nullPointerException){
             Util.showGeneralException(nullPointerException);
         }catch (IllegalArgumentException illegalArgumentException){
             Util.showGeneralException(illegalArgumentException);
-        }catch (RuntimeException runtimeException){
-            Util.showGeneralException(runtimeException);
+        }catch (EntityNotFoundException entityNotFoundException){
+            Util.showGeneralException(entityNotFoundException);
         }catch (Exception exception){
             Util.showGeneralException(exception);
         }
