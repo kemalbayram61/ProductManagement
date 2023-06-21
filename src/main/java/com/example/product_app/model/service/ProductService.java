@@ -16,27 +16,27 @@ public class ProductService extends AbstractProductService{
     }
 
     @Override
-    public Object findByID(Object id) {
+    public Product findByID(Integer id) {
         return null;
     }
 
     @Override
-    public Object update(Object object) {
+    public Product update(Product object) {
         return null;
     }
 
     @Override
-    public void deleteByID(Object id) {
+    public void deleteByID(Integer id) {
 
     }
 
     @Override
-    public List getAll() {
+    public List<Product> getAll() {
         return null;
     }
 
     @Override
-    public Object save(Object object) {
+    public Product save(Product object) {
         return null;
     }
 }

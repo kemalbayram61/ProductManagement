@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public abstract class AbstractProductService implements EntityService{
+public abstract class AbstractProductService implements EntityService<Product, Integer>{
     @Autowired
     protected ProductRepository productRepository;
 
