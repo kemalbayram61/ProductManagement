@@ -54,4 +54,16 @@ public class ProductController
         Product updatedProduct = productService.update(product);
         return ResponseEntity.ok(updatedProduct);
     }
+
+    @GetMapping(path = "/find-by-price-less-than")
+    public ResponseEntity<List<Product>> findByPriceLessThan(@RequestBody double price){
+        List<Product> productList = productService.findByPriceLessThan(price);
+        return ResponseEntity.ok(productList);
+    }
+
+    @GetMapping(path = "/find-by-price-greater-than-equal")
+    public ResponseEntity<List<Product>> findByPriceGreaterThan(@RequestBody double price){
+        List<Product> productList = productService.findByPriceGreaterThanEqual(price);
+        return ResponseEntity.ok(productList);
+    }
 }
