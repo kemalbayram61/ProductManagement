@@ -27,19 +27,25 @@ public class ProductController
     @GetMapping
     public ResponseEntity<List<Product>> getAll(){
         List<Product> productList = productService.getAll();
-        return ResponseEntity.ok(productList);
+        if (productList.size() != 0)
+            return ResponseEntity.ok(productList);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping
     public ResponseEntity<Product> update(@RequestBody Product product){
         Product updatedProduct = productService.update(product);
-        return ResponseEntity.ok(updatedProduct);
+        if(updatedProduct != null)
+            return ResponseEntity.ok(updatedProduct);
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Product> getById(@PathVariable("id") Integer id){
         Product product = productService.findByID(id);
-        return ResponseEntity.ok(product);
+        if(product != null)
+            return ResponseEntity.ok(product);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @DeleteMapping(path = "/{id}")
@@ -52,18 +58,24 @@ public class ProductController
     public ResponseEntity<Product> updateById(@PathVariable("id") Integer id, @RequestBody Product product){
         product.setProductID(id);
         Product updatedProduct = productService.update(product);
-        return ResponseEntity.ok(updatedProduct);
+        if(updatedProduct != null)
+            return ResponseEntity.ok(updatedProduct);
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
     }
 
     @GetMapping(path = "/find-by-price-less-than/{price}")
     public ResponseEntity<List<Product>> findByPriceLessThan(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceLessThan(price);
-        return ResponseEntity.ok(productList);
+        if (productList.size() != 0)
+            return ResponseEntity.ok(productList);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping(path = "/find-by-price-greater-than-equal/{price}")
     public ResponseEntity<List<Product>> findByPriceGreaterThanEqual(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceGreaterThanEqual(price);
-        return ResponseEntity.ok(productList);
+        if (productList.size() != 0)
+            return ResponseEntity.ok(productList);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
