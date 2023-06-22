@@ -29,4 +29,29 @@ public class ProductController
         List<Product> productList = productService.getAll();
         return ResponseEntity.ok(productList);
     }
+
+    @PutMapping
+    public ResponseEntity<Product> update(@RequestBody Product product){
+        Product updatedProduct = productService.update(product);
+        return ResponseEntity.ok(updatedProduct);
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Product> getById(@PathVariable("id") Integer id){
+        Product product = productService.findByID(id);
+        return ResponseEntity.ok(product);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable("id") Integer id){
+        productService.deleteByID(id);
+        return ResponseEntity.ok("Silme İşlemi Başarılı");
+    }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<Product> updateById(@PathVariable("id") Integer id, @RequestBody Product product){
+        product.setProductID(id);
+        Product updatedProduct = productService.update(product);
+        return ResponseEntity.ok(updatedProduct);
+    }
 }
