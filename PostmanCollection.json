@@ -1,0 +1,300 @@
+{
+  "info": {
+    "_postman_id": "e50238d1-7a9e-4526-87ae-3a087880f71c",
+    "name": "Product",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "11394460"
+  },
+  "item": [
+    {
+      "name": "All product",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{bus}}api/product",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find By Price Less Than",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{bus}}api/product/find-by-price-less-than/100000",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product",
+            "find-by-price-less-than",
+            "100000"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find By Price Greater Than Equal",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{bus}}api/product/find-by-price-greater-than-equal/2",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product",
+            "find-by-price-greater-than-equal",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find By ID",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{bus}}api/product/102",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product",
+            "102"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete By ID",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{bus}}api/product/52",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product",
+            "52"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Save Product",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"MSI Notebook\",\r\n    \"price\": 20000.0,\r\n    \"category\": \"Notebook\",\r\n    \"description\": \"MSI GS 73\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bus}}api/product",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update By ID",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"MSI Notebook\",\r\n    \"price\": 100000.0,\r\n    \"category\": \"Gaming Notebook\",\r\n    \"description\": \"MSI Katana 17\",\r\n    \"createdDate\": \"2023-06-21T13:59:21.150+00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bus}}api/product/3",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "123",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kemal",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"productID\" : 102,\r\n    \"name\": \"MSI Notebook\",\r\n    \"price\": 20000.0,\r\n    \"category\": \"Gaming Notebook\",\r\n    \"description\": \"MSI GS 73\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{bus}}api/product",
+          "host": [
+            "{{bus}}api"
+          ],
+          "path": [
+            "product"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
