@@ -55,14 +55,14 @@ public class ProductController
         return ResponseEntity.ok(updatedProduct);
     }
 
-    @GetMapping(path = "/find-by-price-less-than")
-    public ResponseEntity<List<Product>> findByPriceLessThan(@RequestBody double price){
+    @GetMapping(path = "/find-by-price-less-than/{price}")
+    public ResponseEntity<List<Product>> findByPriceLessThan(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceLessThan(price);
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping(path = "/find-by-price-greater-than-equal")
-    public ResponseEntity<List<Product>> findByPriceGreaterThan(@RequestBody double price){
+    @GetMapping(path = "/find-by-price-greater-than-equal/{price}")
+    public ResponseEntity<List<Product>> findByPriceGreaterThan(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceGreaterThanEqual(price);
         return ResponseEntity.ok(productList);
     }
