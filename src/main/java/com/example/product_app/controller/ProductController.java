@@ -62,7 +62,7 @@ public class ProductController
     }
 
     @GetMapping(path = "/find-by-price-greater-than-equal/{price}")
-    public ResponseEntity<List<Product>> findByPriceGreaterThan(@PathVariable("price") Double price){
+    public ResponseEntity<List<Product>> findByPriceGreaterThanEqual(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceGreaterThanEqual(price);
         return ResponseEntity.ok(productList);
     }
