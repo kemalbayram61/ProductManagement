@@ -1,6 +1,7 @@
 package com.example.product_app.security;
 
 import com.example.product_app.properties.SecureConfigProperties;
+import com.example.product_app.utility.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,11 +26,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //authentication(identity validation) method
     @Override
     protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        authenticationManagerBuilder.inMemoryAuthentication()
-                .passwordEncoder(passwordEncoder)
-                .withUser(this.secureConfigProperties.getSecureKeyUserName())
-                .password(this.secureConfigProperties.getSecureKeyPassword())
-                .roles("USER");
+        try {
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            authenticationManagerBuilder.inMemoryAuthentication()
+                    .passwordEncoder(passwordEncoder)
+                    .withUser(this.secureConfigProperties.getSecureKeyUserName())
+                    .password(passwordEncoder.encode(this.secureConfigProperties.getSecureKeyPassword()))
+                    .roles("USER");
+        }catch (Exception exception){
+            Util.showGeneralException(exception);
+        }
     }
 }
