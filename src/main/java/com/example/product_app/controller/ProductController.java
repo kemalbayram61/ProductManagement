@@ -3,6 +3,9 @@ package com.example.product_app.controller;
 import com.example.product_app.model.entity.Product;
 import com.example.product_app.model.service.AbstractProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +15,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/product")
+@CacheConfig(cacheNames = "products")
 public class ProductController
 {
     @Autowired
     private AbstractProductService productService;
+
+    @Autowired
+    CacheManager cacheManager;
+
     @PostMapping
     public ResponseEntity<Product> save(@RequestBody Product product){
         product.setCreatedDate(new Date());
@@ -25,9 +33,10 @@ public class ProductController
     }
 
     @GetMapping
+    @Cacheable
     public ResponseEntity<List<Product>> getAll(){
         List<Product> productList = productService.getAll();
-        if (productList.size() != 0)
+        if (!productList.isEmpty())
             return ResponseEntity.ok(productList);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
@@ -64,17 +73,19 @@ public class ProductController
     }
 
     @GetMapping(path = "/find-by-price-less-than/{price}")
+    @Cacheable
     public ResponseEntity<List<Product>> findByPriceLessThan(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceLessThan(price);
-        if (productList.size() != 0)
+        if (!productList.isEmpty())
             return ResponseEntity.ok(productList);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @GetMapping(path = "/find-by-price-greater-than-equal/{price}")
+    @Cacheable
     public ResponseEntity<List<Product>> findByPriceGreaterThanEqual(@PathVariable("price") Double price){
         List<Product> productList = productService.findByPriceGreaterThanEqual(price);
-        if (productList.size() != 0)
+        if (!productList.isEmpty())
             return ResponseEntity.ok(productList);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
